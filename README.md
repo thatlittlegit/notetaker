@@ -23,6 +23,6 @@ Section
 We hope to use the [Google Calendar API](https://developers.google.com/calendar/api/guides/overview) to synchronize actionable events with the user’s
 calendar.
 
-Some other helpful documentation
+Some other helpful documentation:
 - https://developers.google.com/calendar/api/v3/reference/events/insert
 - https://developers.google.com/identity/protocols/oauth2/native-app
