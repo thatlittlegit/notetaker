@@ -25,4 +25,7 @@ calendar.
 
 Some other helpful documentation:
 - https://developers.google.com/calendar/api/v3/reference/events/insert
+- https://developers.google.com/calendar/api/v3/reference/events/quickAdd
 - https://developers.google.com/identity/protocols/oauth2/native-app
+
+![Example of successfully calling quickAdd](example-call.png)
