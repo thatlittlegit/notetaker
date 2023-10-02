@@ -28,7 +28,7 @@ public class Client {
         String token = c.getAuthorizationToken(client, code, verifier);
         System.out.println("got authorization token: " + token);
 
-        // TODO implement the insert method; you'll need that token.
+        c.addEvent(client, token, "It works on October 2nd");
     }
 
     private String getCodeVerifier() {
@@ -133,6 +133,26 @@ public class Client {
             JSONObject parsed = new JSONObject(response.body().string());
 
             return parsed.getString("access_token");
+        }
+    }
+
+    private void addEvent(OkHttpClient client, String token, String eventName) throws IOException {
+        HttpUrl url = new HttpUrl.Builder()
+                .scheme("https")
+                .host("www.googleapis.com")
+                .addPathSegments("calendar/v3/calendars/primary/events/quickAdd")
+                .addQueryParameter("text", eventName)
+                .build();
+
+        Request req = new Request.Builder()
+                .post(RequestBody.create(null, ""))
+                .url(url)
+                .addHeader("Authorization", "Bearer " + token)
+                .build();
+
+        try (Response resp = client.newCall(req).execute()) {
+            System.out.println("event creation gave " + resp.code() + ": " + resp.message());
+            System.out.println(resp.body().string());
         }
     }
 }
